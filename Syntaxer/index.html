@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS-Grid Dmeo</title>
+
+    <!--Google Font Embed (Poppins)-->
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap");
+    </style>
+
+    <!--
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet"> -->
+
+    <!--My Stylesheet-->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <!--Main Container-->
+    <div class="container">
+
+      <!-- Column Markers -->
+      <div class="box a1"><p class="label">Col 1</p></div>
+      <div class="box a2"><p class="label">Col 2</p></div>
+      <div class="box a3"><p class="label">Col 3</p></div>
+      <div class="box a4"><p class="label">Col 4</p></div>
+      <div class="box a5"><p class="label">Col 5</p></div>
+      <div class="box a6"><p class="label">Col 6</p></div>
+      <div class="box a7"><p class="label">Col 7</p></div>
+      <div class="box a8"><p class="label">Col 8</p></div>
+      <div class="box a9"><p class="label">Col 9</p></div>
+      <div class="box a10"><p class="label">Col 10</p></div>
+      
+      <!-- Row Markers -->
+      <div class="box r1"><p class="label">Row 1</p></div>
+      <div class="box r2"><p class="label">Row 2</p></div>
+      <div class="box r3"><p class="label">Row 3</p></div>
+      <div class="box r4"><p class="label">Row 4</p></div>
+      <div class="box r5"><p class="label">Row 5</p></div>
+      <div class="box r6"><p class="label">Row 6</p></div>
+      <div class="box r7"><p class="label">Row 7</p></div>
+      <div class="box r8"><p class="label">Row 8</p></div>
+
+      <!-- Z-Index Testing -->
+      <div class="card c1">
+        <p class="cLabel">Card 1</p>
+        <p class="cText">Normally, layering</p>
+      </div>
+
+      <!-- Cards -->
+      <div class="card c2">
+        <p class="cLabel">Card 2</p>
+        <p class="cText">C A S C A D E S</p>
+      </div>
+
+      <div class="card c3">
+        <p class="cLabel">Card 3</p>
+        <p class="cText">(further down the stylesheet is on top)</p>
+      </div>
+
+      <div class="card c4">
+        <p class="cLabel">Card 4</p>
+        <p class="cText">But Z-index can override this!</p>
+      </div>
+
+      <!-- Modal Box -->
+      <div class="box modalBox">
+        <p class="cLabel">Modal</p>
+        <button id="modalBtn" class="button-toggleModal center">Toggle</button>
+      </div>
+
+      <!-- Modal -->
+      <div id="modalWindow" class="modalWindow">
+        <p class="cLabel">Modal</p>
+      </div>
+
+      <!-- Off Click span -->
+      <div id="closeWindow" class="close"></div>
+      
+
+    </div>
+  </body>
+</html>
+
+<script>
+  const modal = document.getElementById("modalWindow");
+  const modalBtn = document.getElementById("modalBtn");
+  const closeWindow = document.getElementById("closeWindow");
+
+  modalBtn.onclick = () => {
+    modal.style.display = 'block';
+    closeWindow.style.display = 'block';
+  };
+  closeWindow.onclick = () => {
+    modal.style.display = 'none';
+    closeWindow.style.display = 'none';
+  };
+</script>
