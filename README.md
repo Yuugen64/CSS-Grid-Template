@@ -1,7 +1,7 @@
 <!-- PROJECT HEADER -->
 <div align="center">
   <a href="https://github.com/Yuugen64/">
-    <img src="GithubIcon2_512x512.png" alt="Logo" width="100" height="100">
+    <img src="assets/GithubIcon2_512x512.png" alt="Logo" width="100" height="100">
   </a>
 
 
