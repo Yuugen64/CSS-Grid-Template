@@ -42,6 +42,7 @@ p {
     font-weight: 500;
     text-align: center;
 }
+
 /*===== ========== =====*/
 
 
@@ -94,7 +95,8 @@ p {
         display: grid;
         height: 100vh;
         width: 100vw;
-        gap: 5px; /* This is the current implementation of gutters for CSS Grid - ONLY AFFECTS SPACE BETWEEN */
+        gap: 5px;
+        /* This is the current implementation of gutters for CSS Grid - ONLY AFFECTS SPACE BETWEEN */
         grid-template-columns: repeat(10, [col] 1fr);
         grid-template-rows: repeat(8, [row] 1fr);
         background-color: #EEE;
@@ -105,7 +107,8 @@ p {
         background-color: #444;
         color: #fff;
         border-radius: 5px;
-        padding: 0px; /*Change this to view how the padding affects all of the boxes*/
+        padding: 0px;
+        /*Change this to view how the padding affects all of the boxes*/
         font-size: 2rem;
         z-index: 10;
         width: 100%;
@@ -115,6 +118,7 @@ p {
         font-size: 2rem;
         padding: 10px
     }
+
     /*==== ======== =====*/
 
 
@@ -126,25 +130,27 @@ p {
         color: #DDDDDD;
     }
 
-    .cText{
+    .cText {
         font-size: 1.5rem;
         padding: 10px 10px 5px 25px;
         /*Why is the width changing without the text overlapping?*/
-    }  
+    }
 
-    .card{
+    .card {
         border-radius: 15px;
         font-size: 1.5rem;
     }
+
     /*===== ========= =====*/
 
 
     /*===== == Modal == =====*/
     .modalBox {
+        /*This is the generic modal box*/
         grid-column: col 5 / span 2;
         grid-row: row 2;
         background-color: #457a8d;
-        color:#000000;
+        color: #000000;
         border-radius: 15px;
 
         z-index: 100;
@@ -153,24 +159,63 @@ p {
         /*For positioning the button within*/
         display: flex;
         flex-direction: column;
+
+
     }
+
     .modalWindow {
         grid-column: col 4 / span 4;
         grid-row: row 3 / span 5;
         background-color: #339c4d;
         z-index: 120;
-        color:#000000;
+        color: #000000;
         border-radius: 15px;
         overflow-y: auto;
         display: none;
     }
-    .close{
+
+    .nonGridModal {
+        position: fixed;
+        width: 700px;
+        height: 400px;
+        top: 400px;
+        justify-self: center;
+        background-color: #EEE;
+        z-index: 120;
+        color: #000000;
+        border-radius: 15px;
+        overflow-y: auto;
+
+        transform: translateY(-200%);
+        /*This moves the modal out of the view*/
+    }
+
+    .nonGridModal.animateIn {
+        transform: translateY(0);
+        transition-delay: 0s;
+        transition-property: transform;
+        transition-timing-function: ease-in-out;
+        transition-duration: .3s;
+    }
+
+    .close {
         grid-column: col 1 / span 10;
         grid-row: row 1 / span 8;
         background-color: #012431;
         opacity: 0.5;
         z-index: 119;
         display: none;
+
+        animation: fadeIn .3s cubic-bezier(0.165, 0.840, 0.440, 1.000);
+    }
+    @keyframes fadeIn {
+        0% {
+            background: rgba(0, 0, 0, .0);
+        }
+
+        100% {
+            background: rgba(0, 38, 51, 0.7);
+        }
     }
     /*===== ========== =====*/
 
@@ -178,17 +223,20 @@ p {
     .button-toggleModal {
         background-color: #04773b;
         background-image: radial-gradient(100% 100% at 100% 0, #339763 0, #04773b 100%);
-        box-shadow:#033a1e 0 2px 4px,#033a1e 0 7px 13px -3px,#033a1e 0 -3px 0 inset;
+        box-shadow: #033a1e 0 2px 4px, #033a1e 0 7px 13px -3px, #033a1e 0 -3px 0 inset;
         border: 0px;
         border-radius: 5px;
         padding: 5px 12px 5px 12px;
-        
-        height: 42px; /*Constrains the height of the button when inside a flex container*/
+
+        height: 42px;
+        /*Constrains the height of the button when inside a flex container*/
 
         font-size: 1.5rem;
         color: #EEE;
-        white-space: nowrap; /*Wrapping of text in button - no*/
-        user-select: none; /*This determines if the user can select the text in the button*/
+        white-space: nowrap;
+        /*Wrapping of text in button - no*/
+        user-select: none;
+        /*This determines if the user can select the text in the button*/
         overflow: hidden;
         justify-self: center;
         align-self: center;
@@ -197,83 +245,97 @@ p {
         cursor: pointer;
         touch-action: manipulation;
     }
+
     .button-toggleModal:focus {
         box-shadow: #033a1e 0 0 0 1px inset, rgba(45, 35, 66, .4) 0 2px 4px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #033a1e 0 -3px 0 inset;
     }
+
     .button-toggleModal:hover {
-        box-shadow:#033a1e 0 4px 8px .5px, #033a1e 0 7px 13px -3px, #033a1e 0 -3px 0 inset;
+        box-shadow: #033a1e 0 4px 8px .5px, #033a1e 0 7px 13px -3px, #033a1e 0 -3px 0 inset;
         transform: translateY(-2px);
         background-image: radial-gradient(100% 100% at 100% 0, #41bd7d 0, #04773b 100%);
         color: #FFF;
     }
+
     .button-toggleModal:active {
         box-shadow: #033a1e 0 3px 7px inset;
         transform: translateY(2px);
     }
+
     /*===== ========== =====*/
 
-    
+
     /*===== == COLLUMNS == =====*/
     .a1 {
         grid-column: col / span 1;
         grid-row: row;
         background-color: #c8ead1;
-        color:#000000;
+        color: #000000;
     }
+
     .a2 {
         grid-column: col 2 / span 1;
         grid-row: row;
         background-color: #8acb9a;
-        color:#1c1c1c;
+        color: #1c1c1c;
     }
+
     .a3 {
         grid-column: col 3 / span 1;
         grid-row: row;
         background-color: #53c06e;
-        color:#414141;
+        color: #414141;
     }
+
     .a4 {
         grid-column: col 4 / span 1;
         grid-row: row;
         background-color: #24a143;
-        color:#d5d5d5;
+        color: #d5d5d5;
     }
+
     .a5 {
         grid-column: col 5 / span 1;
         grid-row: row;
         background-color: #069e2d;
-        color:#e6e6e6;
+        color: #e6e6e6;
     }
+
     .a6 {
         grid-column: col 6 / span 1;
         grid-row: row;
         background-color: #535654;
-        color:#dedede;
+        color: #dedede;
     }
+
     .a7 {
         grid-column: col 7 / span 1;
         grid-row: row;
         background-color: #3f4e43;
-        color:#e8e8e8;
+        color: #e8e8e8;
     }
+
     .a8 {
         grid-column: col 8 / span 1;
         grid-row: row;
         background-color: #2e5036;
-        color:#eeeeee;
+        color: #eeeeee;
     }
+
     .a9 {
         grid-column: col 9 / span 1;
         grid-row: row;
         background-color: #16381f;
-        color:#f7f7f7;
+        color: #f7f7f7;
     }
+
     .a10 {
         grid-column: col 10 / span 1;
         grid-row: row;
         background-color: #16381f;
-        color:#ffffff;
+        color: #ffffff;
     }
+
     /*===== ========== =====*/
 
 
@@ -282,85 +344,97 @@ p {
         grid-column: col 1 / span 1;
         grid-row: row;
         background-color: #d8e0e3;
-        color:#000000;
+        color: #000000;
         width: 50%;
         justify-self: right;
     }
+
     .r2 {
         grid-column: col 1 / span 1;
         grid-row: row 2;
         background-color: #aec5ce;
-        color:#000000;
+        color: #000000;
     }
+
     .r3 {
         grid-column: col 1 / span 1;
         grid-row: row 3;
         background-color: #6a96a5;
-        color:#000000;
+        color: #000000;
     }
+
     .r4 {
         grid-column: col 1 / span 1;
         grid-row: row 4;
         background-color: #457a8d;
-        color:#000000;
+        color: #000000;
     }
+
     .r5 {
         grid-column: col 1 / span 1;
         grid-row: row 5;
         background-color: #2f6579;
-        color:#ffffff;
+        color: #ffffff;
     }
+
     .r6 {
         grid-column: col 1 / span 1;
         grid-row: row 6;
         background-color: #174c5f;
-        color:#ffffff;
+        color: #ffffff;
     }
+
     .r7 {
         grid-column: col 1 / span 1;
         grid-row: row 7;
         background-color: #0d3848;
-        color:#ffffff;
+        color: #ffffff;
     }
+
     .r8 {
         grid-column: col 1 / span 1;
         grid-row: row 8;
         background-color: #012431;
-        color:#ffffff;
+        color: #ffffff;
     }
+
     /*===== ========== =====*/
 
 
-    
+
     /*==== == Cards == =====*/
-    .c1{
+    .c1 {
         grid-column: col 3 / span 3;
         grid-row: row 3 / span 3;
         background-color: #1f6377;
         color: white;
         z-index: 60;
     }
-    .c2{
+
+    .c2 {
         grid-column: col 5 / span 3;
         grid-row: row 4 / span 3;
         background-color: #058e3f;
         color: white;
         z-index: 70;
     }
-    .c3{
+
+    .c3 {
         grid-column: col 7 / span 3;
         grid-row: row 5 / span 3;
         background-color: #033a1e;
         color: white;
         z-index: 80;
     }
-    .c4{
+
+    .c4 {
         grid-column: col 2 / span 9;
         grid-row: row 2 / span 7;
         background-color: #069e2d;
         color: white;
         z-index: 20;
     }
+
     /*===== ========== =====*/
 }
 
